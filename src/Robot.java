@@ -7,11 +7,15 @@ public class Robot {
     public String direction;      
 
     
-    void moveForward(int steps) { 
-        for(int i = 0; i <= steps; i++) {
+    void moveForward() { 
         if (direction.equals("NORTH")) {             
             y++;         
         }     
-    }
     } 
+    
+    void moveForward (int steps) {
+        for (int i = 0; i < steps; i++) {
+            this.moveForward();
+        }
+    }
 }

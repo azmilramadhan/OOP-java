@@ -10,9 +10,10 @@ public class Main {
         robotA.y = 0;         
         robotA.direction = "NORTH";          
         
-       
+        robotA.moveForward();
+        System.out.println(robotA.y);   
+        
         robotA.moveForward(5);
-    
         System.out.println(robotA.y);    
     } 
 }
