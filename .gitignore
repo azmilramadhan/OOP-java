@@ -1,0 +1,10 @@
+# File hasil compile Java
+*.class
+
+# Folder buatan NetBeans
+/build/
+/dist/
+nbproject/private/
+
+# File konfigurasi yang tidak perlu
+*.properties~
