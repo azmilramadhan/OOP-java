@@ -2,20 +2,55 @@ package promlan1;
 
 public class Robot {     
   
-    public int x;     
-    public int y;     
-    public String direction;      
-
+    String name;
+    int x;
+    int y;
+    String direction;
+    int battery;
     
-    void moveForward() { 
-        if (direction.equals("NORTH")) {             
-            y++;         
-        }     
-    } 
-    
-    void moveForward (int steps) {
-        for (int i = 0; i < steps; i++) {
-            this.moveForward();
+    void moveForward(){
+        if (battery <=20 ){
+            return;
         }
+        if (direction.equalsIgnoreCase("NORTH")){
+            y++;
+        }
+        else if (direction.equalsIgnoreCase("EAST")){
+            x++;
+        }
+        else if (direction.equalsIgnoreCase("SOUTH")){
+            y--;
+        }
+        else if (direction.equalsIgnoreCase("WEST")){
+            x--;
+        }
+        battery-=10;
     }
+    void turnLeft(){
+        if (direction.equals("NORTH")) {
+        direction = "WEST";
+    } else if (direction.equals("WEST")) {
+        direction = "SOUTH";
+    } else if (direction.equals("SOUTH")) {
+        direction = "EAST";
+    } else if (direction.equals("EAST")) {
+        direction = "NORTH";
+    }
+    }
+    
+    void turnRight() {
+    if (direction.equals("NORTH")) {
+        direction = "EAST";
+    } else if (direction.equals("EAST")) {
+        direction = "SOUTH";
+    } else if (direction.equals("SOUTH")) {
+        direction = "WEST";
+    } else if (direction.equals("WEST")) {
+        direction = "NORTH";
+    }
+}
+   void charge(){
+       battery = 100;
+       System.out.println("battery sudah dicas sampai 100%");
+   }
 }
