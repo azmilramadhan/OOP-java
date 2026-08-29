@@ -7,12 +7,16 @@ public class Main {
             robotA.name = "Asep";
             robotA.x = 0;
             robotA.y = 0;
-            robotA.direction = "north";
-            robotA.battery = 100;
-
-            robotA.moveForward();
+            robotA.direction = "NORTH";
+            robotA.battery = 0;
+            
+            robotA.isBatteryLow();
+            robotA.turnRight();
             System.out.println ("Position: ("+ robotA.x + "," + robotA.y + ") | Direction: "+ robotA.direction + "| Battery: "+ robotA.battery);
-
-
+            
+            robotA.charge();
+            robotA.turnLeft();
+            robotA.moveForward(5);
+            System.out.println ("Position: ("+ robotA.x + "," + robotA.y + ") | Direction: "+ robotA.direction + "| Battery: "+ robotA.battery);
 }
 }

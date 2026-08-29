@@ -9,7 +9,8 @@ public class Robot {
     int battery;
     
     void moveForward(){
-        if (battery <=20 ){
+        if (battery <=0 ){
+            System.out.println("Baterai udh 0% boz, gabisa jalan");
             return;
         }
         if (direction.equalsIgnoreCase("NORTH")){
@@ -26,7 +27,20 @@ public class Robot {
         }
         battery-=10;
     }
+        boolean isBatteryLow(){
+        if (battery < 20){
+            System.out.println("Baterai lowbat, cas heula");
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
     void turnLeft(){
+        if (battery <=0 ){
+            System.out.println("Baterai udh 0% boz, gabisa jalan");
+            return;
+        }
         if (direction.equals("NORTH")) {
         direction = "WEST";
     } else if (direction.equals("WEST")) {
@@ -39,6 +53,10 @@ public class Robot {
     }
     
     void turnRight() {
+        if (battery <=0 ){
+            System.out.println("Baterai udh 0% boz, gabisa jalan");
+            return;
+        }
     if (direction.equals("NORTH")) {
         direction = "EAST";
     } else if (direction.equals("EAST")) {
@@ -52,5 +70,11 @@ public class Robot {
    void charge(){
        battery = 100;
        System.out.println("battery sudah dicas sampai 100%");
+   }
+   
+   void moveForward(int steps){
+       for (int i=0; i<steps; i++){
+           this.moveForward();
+       }
    }
 }
