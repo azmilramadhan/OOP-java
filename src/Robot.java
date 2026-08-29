@@ -1,7 +1,6 @@
 package promlan1;
 
-public class Robot {     
-  
+public class Robot {
     String name;
     int x;
     int y;
@@ -9,72 +8,62 @@ public class Robot {
     int battery;
     
     void moveForward(){
-        if (battery <=0 ){
-            System.out.println("Baterai udh 0% boz, gabisa jalan");
+        if (battery <= 0){
+            System.out.println("Baterai abis, gabisa jalan");
             return;
         }
-        if (direction.equalsIgnoreCase("NORTH")){
-            y++;
-        }
-        else if (direction.equalsIgnoreCase("EAST")){
-            x++;
-        }
-        else if (direction.equalsIgnoreCase("SOUTH")){
-            y--;
-        }
-        else if (direction.equalsIgnoreCase("WEST")){
-            x--;
-        }
-        battery-=10;
-    }
-        boolean isBatteryLow(){
-        if (battery < 20){
-            System.out.println("Baterai lowbat, cas heula");
-            return true;
-        }
-        else {
-            return false;
-        }
-    }
-    void turnLeft(){
-        if (battery <=0 ){
-            System.out.println("Baterai udh 0% boz, gabisa jalan");
-            return;
-        }
-        if (direction.equals("NORTH")) {
-        direction = "WEST";
-    } else if (direction.equals("WEST")) {
-        direction = "SOUTH";
-    } else if (direction.equals("SOUTH")) {
-        direction = "EAST";
-    } else if (direction.equals("EAST")) {
-        direction = "NORTH";
-    }
+        if (direction.equals("NORTH"))y++;
+        else if (direction.equals("EAST"))x++;
+        else if (direction.equals("SOUTH"))y--;
+        else if (direction.equals("WEST"))x--;
+    battery -=10;
     }
     
-    void turnRight() {
-        if (battery <=0 ){
-            System.out.println("Baterai udh 0% boz, gabisa jalan");
-            return;
+    void turnLeft(){
+        if (direction.equals("NORTH")){
+            direction = "WEST";
         }
-    if (direction.equals("NORTH")) {
-        direction = "EAST";
-    } else if (direction.equals("EAST")) {
-        direction = "SOUTH";
-    } else if (direction.equals("SOUTH")) {
-        direction = "WEST";
-    } else if (direction.equals("WEST")) {
-        direction = "NORTH";
+        else if (direction.equals("EAST")){
+            direction = "NORTH";
+        }
+        else if (direction.equals("SOUTH")){
+            direction = "EAST";
+        }
+        else if (direction.equals("WEST")){
+            direction = "SOUTH";
+        }
     }
-}
-   void charge(){
-       battery = 100;
-       System.out.println("battery sudah dicas sampai 100%");
-   }
-   
-   void moveForward(int steps){
-       for (int i=0; i<steps; i++){
-           this.moveForward();
-       }
-   }
+    
+    void turnRight(){
+         if (direction.equals("NORTH")){
+            direction = "EAST";
+        }
+        else if (direction.equals("EAST")){
+            direction = "SOUTH";
+        }
+        else if (direction.equals("SOUTH")){
+            direction = "WEST";
+        }
+        else if (direction.equals("WEST")){
+            direction = "NORTH";
+        } 
+    }
+    
+    void charge(){
+        battery = 100;
+    }
+    
+    void printStatus(){
+        System.out.println ("Position: ("+x+","+ y+") | Direction: "+ direction+ "| Battery: "+ battery);
+    }
+    
+    void moveForward(int steps){
+        for (int i = 0; i < steps; i++){
+            this.moveForward();
+        }
+    }
+    
+    boolean isBatteryLow(){
+        return battery < 20;
+    }
 }
