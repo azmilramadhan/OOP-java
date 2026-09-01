@@ -12,7 +12,7 @@ public class Main{
         
         robotA.printStatus();
         robotA.moveForward(6);
-        if (robotA.isBatteryLow()){
+        if (robotA.isBatteryLow()){ 
             System.out.println("Baterai low");
             robotA.charge();
         }

@@ -20,18 +20,18 @@ public class Robot {
     }
     
     void turnLeft(){
-        if (direction.equals("NORTH")){
+        if (direction.equals("NORTH"))
             direction = "WEST";
-        }
-        else if (direction.equals("EAST")){
+        
+        else if (direction.equals("EAST"))
             direction = "NORTH";
-        }
-        else if (direction.equals("SOUTH")){
+       
+        else if (direction.equals("SOUTH"))
             direction = "EAST";
-        }
-        else if (direction.equals("WEST")){
+        
+        else if (direction.equals("WEST"))
             direction = "SOUTH";
-        }
+        
     }
     
     void turnRight(){
@@ -54,7 +54,7 @@ public class Robot {
     }
     
     void printStatus(){
-        System.out.println ("Position: ("+x+","+ y+") | Direction: "+ direction+ "| Battery: "+ battery);
+        System.out.printf("Position: (%d, %d) | Direction: %s | Battery: %d%%\n", x, y, direction, battery);
     }
     
     void moveForward(int steps){
