@@ -1,13 +1,64 @@
 package promlan1;
 
 public class Robot {
-    String name;
-    int x;
-    int y;
-    String direction;
-    int battery;
+    private String name;
+    private int x;
+    private int y;
+    private String direction;
+    private int battery;
     
-    void moveForward(){
+   public Robot (){
+       this.name = "UDIN";
+       this.x = 0;
+       this.y = 0;
+       this.direction = "NORTH";
+       this.battery = 100;
+   }
+       
+   public void setName(String name){
+       this.name = name;
+   }
+   
+   public String getName(){
+       return this.name;
+   }
+   
+    public void setX(int x){
+       this.x = x;
+   }
+   
+   public int getX (){
+       return this.x;
+   }
+   
+   public void setY(int y){
+       this.y = y;
+   }
+   
+   public int getY (){
+       return this.y;
+   }
+   
+    public void setDir(String direction){
+       this.direction = direction;
+   }
+   
+   public String getDir(){
+       return this.direction;
+   }
+    public void setBat(int battery){
+        if (battery <0 || battery > 100){
+            System.out.println("invalid masukkan dengan jangka 0-100");
+            return;
+        }
+       this.battery = battery;
+   }
+   
+   public int getBat (){
+       return this.battery;
+   }
+       
+   public void moveForward(){
         if (battery <= 0){
             System.out.println("Baterai abis, gabisa jalan");
             return;
@@ -19,7 +70,7 @@ public class Robot {
     battery -=10;
     }
     
-    void turnLeft(){
+    public void turnLeft(){
         if (direction.equals("NORTH"))
             direction = "WEST";
         
@@ -34,7 +85,7 @@ public class Robot {
         
     }
     
-    void turnRight(){
+   public void turnRight(){
          if (direction.equals("NORTH")){
             direction = "EAST";
         }
@@ -49,21 +100,21 @@ public class Robot {
         } 
     }
     
-    void charge(){
+    public void charge(){
         battery = 100;
     }
-    
-    void printStatus(){
+
+    public void printStatus(){
         System.out.printf("Position: (%d, %d) | Direction: %s | Battery: %d%%\n", x, y, direction, battery);
     }
     
-    void moveForward(int steps){
+    public void moveForward(int steps){
         for (int i = 0; i < steps; i++){
             this.moveForward();
         }
     }
     
-    boolean isBatteryLow(){
+    public boolean isBatteryLow(){
         return battery < 20;
     }
 }
