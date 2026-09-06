@@ -7,32 +7,20 @@ public class Robot {
     private String direction;
     private int battery;
     
-   public Robot (){
-       this.name = "UDIN";
-       this.x = 0;
-       this.y = 0;
-       this.direction = "NORTH";
-       this.battery = 100;
-   }
-       
-   public void setName(String name){
+   public Robot (String name, int x, int y, String direction, int battery){
        this.name = name;
+       this.x = x;
+       this.y = y;
+       this.setDir(direction);
+       this.setBat(battery);
    }
    
    public String getName(){
        return this.name;
    }
    
-    public void setX(int x){
-       this.x = x;
-   }
-   
    public int getX (){
        return this.x;
-   }
-   
-   public void setY(int y){
-       this.y = y;
    }
    
    public int getY (){
@@ -40,7 +28,17 @@ public class Robot {
    }
    
     public void setDir(String direction){
-       this.direction = direction;
+        switch (direction) {
+            case "NORTH":
+            case "EAST":
+            case "SOUTH":
+            case "WEST":
+                this.direction = direction;
+                break;
+            default:
+                System.out.println("ERROR: ARAH TIDAK DIKENAL");
+                break;
+        }
    }
    
    public String getDir(){
@@ -63,41 +61,35 @@ public class Robot {
             System.out.println("Baterai abis, gabisa jalan");
             return;
         }
-        if (direction.equals("NORTH"))y++;
-        else if (direction.equals("EAST"))x++;
-        else if (direction.equals("SOUTH"))y--;
-        else if (direction.equals("WEST"))x--;
+        switch (direction) {
+            case "NORTH": y++; break;
+            case "EAST": x++; break;
+            case "SOUTH": y--; break;
+            case "WEST": x--; break;
+           
+        }
     battery -=10;
     }
     
     public void turnLeft(){
-        if (direction.equals("NORTH"))
-            direction = "WEST";
-        
-        else if (direction.equals("EAST"))
-            direction = "NORTH";
-       
-        else if (direction.equals("SOUTH"))
-            direction = "EAST";
-        
-        else if (direction.equals("WEST"))
-            direction = "SOUTH";
+        switch (direction) {
+            case "NORTH": direction = "WEST"; break;
+            case "EAST": direction = "NORTH"; break;
+            case "SOUTH": direction = "EAST"; break;
+            case "WEST": direction = "SOUTH"; break;
+            
+        }
         
     }
     
    public void turnRight(){
-         if (direction.equals("NORTH")){
-            direction = "EAST";
+        switch (direction) {
+            case "NORTH": direction = "EAST"; break;
+            case "EAST": direction = "SOUTH"; break;
+            case "SOUTH": direction = "WEST"; break;
+            case "WEST": direction = "NORTH"; break;
+            
         }
-        else if (direction.equals("EAST")){
-            direction = "SOUTH";
-        }
-        else if (direction.equals("SOUTH")){
-            direction = "WEST";
-        }
-        else if (direction.equals("WEST")){
-            direction = "NORTH";
-        } 
     }
     
     public void charge(){
@@ -110,7 +102,11 @@ public class Robot {
     
     public void moveForward(int steps){
         for (int i = 0; i < steps; i++){
+            int batterysebelum = battery;
             this.moveForward();
+            if (battery == batterysebelum){
+                break;
+            } 
         }
     }
     

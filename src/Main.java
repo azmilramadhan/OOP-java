@@ -2,7 +2,7 @@ package promlan1;
 
 public class Main{
     public static void main(String[] args){
-        Robot robotA = new Robot();
+        Robot robotA = new Robot("Udin", 0, 0, "NORTH", 60);
         
         robotA.printStatus();
         robotA.moveForward(6);
@@ -15,7 +15,7 @@ public class Main{
         }
         
         robotA.turnRight();
-        robotA.moveForward(11);
+        robotA.moveForward(12);
         robotA.printStatus();
         
         
