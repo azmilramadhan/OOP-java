@@ -57,7 +57,7 @@ public class Robot {
    }
        
    public void moveForward(){
-        if (battery <= 0){
+        if (battery == 0){
             System.out.println("Baterai abis, gabisa jalan");
             return;
         }
@@ -108,6 +108,14 @@ public class Robot {
                 break;
             } 
         }
+    }
+    
+    public void consumeBattery(int amount){
+        if (amount > battery){
+            battery = 0;
+            return;
+        }
+        battery -= amount;
     }
     
     public boolean isBatteryLow(){
