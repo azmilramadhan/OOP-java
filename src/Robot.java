@@ -11,9 +11,10 @@ public class Robot {
        this.name = name;
        this.x = x;
        this.y = y;
-       this.setDir(direction);
-       this.setBat(battery);
+       this.direction = direction;
+       this.battery = battery;
    }
+   
    
    public String getName(){
        return this.name;
