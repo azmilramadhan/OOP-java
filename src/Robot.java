@@ -8,6 +8,17 @@ public class Robot {
     private int battery;
     
    public Robot (String name, int x, int y, String direction, int battery){
+       
+       if (name == null || name.isBlank()){
+           throw new IllegalArgumentException ("Nama tidak boleh kosong");
+       }
+       if (x < 0 || y < 0){
+           throw new IllegalArgumentExeption ("Position tidak boleh negatif");
+       }
+       if (isValidDirection(direction) == false){
+           throw new IllegalArgumentException ("Arah tidak valid");
+       }
+       
        this.name = name;
        this.x = x;
        this.y = y;
@@ -28,29 +39,9 @@ public class Robot {
        return this.y;
    }
    
-    public void setDir(String direction){
-        switch (direction) {
-            case "NORTH":
-            case "EAST":
-            case "SOUTH":
-            case "WEST":
-                this.direction = direction;
-                break;
-            default:
-                System.out.println("ERROR: ARAH TIDAK DIKENAL");
-                break;
-        }
-   }
    
    public String getDir(){
        return this.direction;
-   }
-    public void setBat(int battery){
-        if (battery <0 || battery > 100){
-            System.out.println("invalid masukkan dengan jangka 0-100");
-            return;
-        }
-       this.battery = battery;
    }
    
    public int getBat (){
