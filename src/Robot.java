@@ -11,8 +11,8 @@ public class Robot {
        this.name = name;
        this.x = x;
        this.y = y;
-       this.setDir(direction);
-       this.setBat(battery);
+       this.direction = direction;
+       this.battery = battery;
    }
    
    public String getName(){
@@ -111,14 +111,20 @@ public class Robot {
     }
     
     public void consumeBattery(int amount){
-        if (amount > battery){
-            battery = 0;
-            return;
-        }
-        battery -= amount;
+        if (amount < 0){
+            throw new IllegalArgumentException ("Angka yang dimasukkan tidak boleh kurang dari 0!"); }
+            battery Math.max(0, Battery - amount);
+        
     }
     
     public boolean isBatteryLow(){
         return battery < 20;
+    }
+    
+    private boolean isValidDirection(String direction){
+        return switch (direction) {
+            case "NORTH", "SOUTH", "EAST", "WEST" -> true;
+            default -> false;
+        };
     }
 }
