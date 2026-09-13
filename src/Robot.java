@@ -13,10 +13,13 @@ public class Robot {
            throw new IllegalArgumentException ("Nama tidak boleh kosong");
        }
        if (x < 0 || y < 0){
-           throw new IllegalArgumentExeption ("Position tidak boleh negatif");
+           throw new IllegalArgumentException ("Position tidak boleh negatif");
        }
        if (isValidDirection(direction) == false){
            throw new IllegalArgumentException ("Arah tidak valid");
+       }
+       if (battery < 0 || battery > 100){
+           throw new IllegalArgumentException ("Baterai tidak valid");
        }
        
        this.name = name;
@@ -105,7 +108,7 @@ public class Robot {
     public void consumeBattery(int amount){
         if (amount < 0){
             throw new IllegalArgumentException ("Angka yang dimasukkan tidak boleh kurang dari 0!"); }
-            battery Math.max(0, Battery - amount);
+            battery = Math.max(0, battery - amount);
         
     }
     
